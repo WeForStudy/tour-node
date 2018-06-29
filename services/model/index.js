@@ -1,5 +1,5 @@
 const pojo = require('../../helper/pojo')
-const { success, failed, successWithCode } = pojo
+const { success, failed, successWithCode, filterUnderLine } = pojo
 const list = [
   'del',
   'add',
@@ -17,7 +17,8 @@ module.exports = (config, file) => {
             res = successWithCode('操作成功')
             return
           }
-          res = success(result)
+          const arr = result.map(item => filterUnderLine(item))
+          res = success(arr)
         })
       } catch(err) {
         res = failed(err)

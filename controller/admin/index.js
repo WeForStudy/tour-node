@@ -7,9 +7,9 @@ const TYPES = {
 const { query } = pool
 // 新添管理员
 const add = (val) => {
-  const { account, phone, password, name, creator } = val
+  const { account, phone, password, name, creator, type } = val
   const _sql = 'insert into tour_admin(account,phone,password,create_time,creator,name,type,status) values(?,?,?,now(),?,?,?,?);'
-  return query( _sql, [ account, phone, password, creator, name,TYPES.NORMAL,STATUS.NORMAL] )
+  return query( _sql, [ account, phone, password, creator, name, type, STATUS.NORMAL,])
 }
 
 const login = (val) => {

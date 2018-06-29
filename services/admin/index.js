@@ -1,7 +1,7 @@
 const controller = require('../../controller/admin')
 const model = require('../model')
 const pojo = require('../../helper/pojo')
-const { success, failed }  = pojo
+const { success, failed, filterUnderLine }  = pojo
 const m  = model([
   'list',
   'add',
@@ -18,7 +18,7 @@ const login = async ctx => {
       if(result.length === 0 || result === null || result === undefined)  
         res = failed('用户名或密码不对')
       else 
-        res = success(result[0])
+        res = success(filterUnderLine(result[0]))
     })
   } catch(err) {
     res = failed(err)
