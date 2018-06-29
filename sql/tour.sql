@@ -9,7 +9,7 @@
  Target Server Version : 80011
  File Encoding         : utf-8
 
- Date: 06/26/2018 14:41:34 PM
+ Date: 06/29/2018 16:32:21 PM
 */
 
 SET NAMES utf8;
@@ -24,7 +24,7 @@ CREATE TABLE `_mysql_session_store` (
   `expires` bigint(20) DEFAULT NULL,
   `data` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 --  Table structure for `tour_admin`
@@ -40,8 +40,16 @@ CREATE TABLE `tour_admin` (
   `name` varchar(20) NOT NULL COMMENT '姓名',
   `type` int(11) NOT NULL COMMENT '类型',
   `status` int(11) DEFAULT NULL COMMENT '状态，是否被删（404为被删，300为异常，200为正常）',
+  `extra_info` varchar(300) NOT NULL DEFAULT '{}' COMMENT '一些额外信息',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+--  Records of `tour_admin`
+-- ----------------------------
+BEGIN;
+INSERT INTO `tour_admin` VALUES ('1', '1234', '13312312321', '1234', '2018-09-09 12:12:12', 'abvc', 'aaa', '9999', '0', '{}'), ('5', '1', '34', '4', '2018-06-29 15:14:04', 'aaa', '2', '0', '404', '{}'), ('6', '1', '1', '1', '2018-06-29 15:16:36', 'aaa', '1', '0', '404', '{}'), ('7', '1', '1', '1', '2018-06-29 15:16:56', 'aaa', '1', '0', '404', '{}'), ('8', '1', '1', '1', '2018-06-29 15:17:23', 'aaa', '1', '0', '404', '{}'), ('9', '2', '2', '2', '2018-06-29 15:17:35', 'aaa', '2', '0', '404', '{}'), ('10', '3', '3', '3', '2018-06-29 15:18:38', 'aaa', '3', '0', '404', '{}'), ('11', '1', '1', '1', '2018-06-29 15:18:52', 'aaa', '1', '0', '404', '{}'), ('12', '1', '1', '1', '2018-06-29 15:19:16', 'aaa', '1', '0', '404', '{}'), ('13', '1', '1', '1', '2018-06-29 15:19:54', 'aaa', '1', '0', '404', '{}'), ('14', '1', '1', '1', '2018-06-29 15:20:03', 'aaa', '1', '0', '404', '{}'), ('15', '1', '1', '1', '2018-06-29 15:40:31', 'aaa', '1', '0', '404', '{}'), ('16', 'aaa', '111', '11', '2018-06-29 16:27:54', 'aaa', '111', '0', '404', '{}'), ('17', '1', '1', '1', '2018-06-29 16:29:25', 'aaa', '1', '1000', '0', '{}');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `tour_comment`
@@ -51,10 +59,9 @@ CREATE TABLE `tour_comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` varchar(50) NOT NULL,
   `content` varchar(500) NOT NULL,
-  `create_time` mediumtext NOT NULL,
   `extra_info` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 --  Table structure for `tour_guider`
@@ -72,7 +79,7 @@ CREATE TABLE `tour_guider` (
   `status` int(11) DEFAULT NULL,
   `extra_info` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 --  Table structure for `tour_order`
@@ -87,7 +94,7 @@ CREATE TABLE `tour_order` (
   `status` int(11) DEFAULT NULL,
   `extra_info` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 --  Table structure for `tour_user`
@@ -105,6 +112,6 @@ CREATE TABLE `tour_user` (
   `status` int(11) DEFAULT NULL,
   `extra_info` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 SET FOREIGN_KEY_CHECKS = 1;
