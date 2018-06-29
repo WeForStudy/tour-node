@@ -1,5 +1,5 @@
-# Loterry-node
-A backend for lottery
+# Tour-node
+A backend for Tour
  
  1. 打开mysql,运行sql下的sql语句
  2. npm install
