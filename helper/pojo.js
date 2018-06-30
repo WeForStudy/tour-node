@@ -4,6 +4,7 @@ const success = (result) => {
     retValue: result
   }
 }
+
 const failed = (error) => {
   console.log(error)
   return {
@@ -11,12 +12,14 @@ const failed = (error) => {
     msg: error.message || error || '服务器异常'
   }
 }
+
 const successWithCode = msg => {
   return {
     retCode: 200,
     msg,
   }
 }
+
 const  filterUnderLine = (obj, char = '_') => {
   const arr =  Object.keys(obj).filter(item => item.indexOf(char) !== -1)
   arr.forEach(item => {
@@ -27,6 +30,7 @@ const  filterUnderLine = (obj, char = '_') => {
   })
   return obj
 }
+
 const replaceUnderLine = (val, char = '_') => {
   const arr = val.split('')
   const index = arr.indexOf(char)
