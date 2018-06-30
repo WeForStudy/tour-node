@@ -24,7 +24,7 @@ CREATE TABLE `_mysql_session_store` (
   `expires` bigint(20) DEFAULT NULL,
   `data` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 -- ----------------------------
 --  Table structure for `tour_admin`
@@ -42,7 +42,7 @@ CREATE TABLE `tour_admin` (
   `status` int(11) DEFAULT NULL COMMENT '状态，是否被删（404为被删，300为异常，200为正常）',
   `extra_info` varchar(300) NOT NULL DEFAULT '{}' COMMENT '一些额外信息',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 ;
 
 -- ----------------------------
 --  Records of `tour_admin`
@@ -61,7 +61,7 @@ CREATE TABLE `tour_comment` (
   `content` varchar(500) NOT NULL,
   `extra_info` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 -- ----------------------------
 --  Table structure for `tour_guider`
@@ -79,7 +79,7 @@ CREATE TABLE `tour_guider` (
   `status` int(11) DEFAULT NULL,
   `extra_info` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 -- ----------------------------
 --  Table structure for `tour_order`
@@ -94,7 +94,7 @@ CREATE TABLE `tour_order` (
   `status` int(11) DEFAULT NULL,
   `extra_info` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 -- ----------------------------
 --  Table structure for `tour_user`
@@ -112,6 +112,6 @@ CREATE TABLE `tour_user` (
   `status` int(11) DEFAULT NULL,
   `extra_info` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 SET FOREIGN_KEY_CHECKS = 1;

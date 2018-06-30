@@ -9,7 +9,21 @@ const m  = model([
   'del',
 ], 'admin')
 
-
+const single = async ctx => {
+  let res;
+  try {
+    const val = ctx.request.body
+    await controller.single(val).then(result => {
+      if(result.length === 0 || result === null || result === undefined)  
+        res = failed('操作失败')
+      else 
+        res = success(filterUnderLine(result[0]))
+    })
+  } catch(err) {
+    res = failed(err)
+  }
+  ctx.body = res
+}
 const login = async ctx => {
   let res;
   try {
@@ -28,6 +42,7 @@ const login = async ctx => {
 module.exports = {
   ...m,
   login,
+  single,
 }
 
 // const add = async ctx => {

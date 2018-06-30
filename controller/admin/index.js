@@ -21,16 +21,24 @@ const login = (val) => {
 // 更改管理员
 const update = (val) => {
   const { account, phone, password, name, type, id } = val
-  const _sql = 'update tour_admin set '
+  let _sql = 'update tour_admin set '
   const { sql, args } = NtNUpdate({ account, phone, password, name, type }, _sql)
   _sql = sql + 'where id = ?'
-  return query( _sql, [...args, id] )
+  const arr = [ ...args, id]
+  return query( _sql, arr )
 }
 
 // 查询管理员
 const list = val => {
   const sql = 'select * from tour_admin where status != ?'
   return query(sql, [ STATUS.DELED ])
+}
+
+// 查询单个管理员byId
+const single = val => {
+  const { id } = val
+  const sql = 'select * from tour_admin where status != ? and id = ?'
+  return query(sql, [ STATUS.DELED, id ])
 }
 
 // 删除管理员
@@ -46,4 +54,5 @@ module.exports = {
   update,
   del,
   login,
+  single,
 }
