@@ -7,7 +7,7 @@ const { STATUS } = require('../../enum')
 const add = (val) => {
   const { name, phone, password } = val
   let _sql = 'insert into tour_user(name,phone,password,create_time,status) values(?,?,?,now(),?);'
-  return query( _sql, [ name, phone, password, creator, STATUS.NORMAL] )
+  return query( _sql, [ name, phone, password, STATUS.NORMAL] )
 }
 
 // 更改用户
@@ -24,6 +24,12 @@ const list = val => {
   const sql = 'select * from tour_user where status != ?'
   return query(sql, [ STATUS.DELED ])
 }
+// 查询单个用户byId
+const single = val => {
+  const { id } = val
+  const sql = 'select * from tour_user where status != ? and id = ?'
+  return query(sql, [ STATUS.DELED, id ])
+}
 
 // 删除用户
 const del = val => {
@@ -37,4 +43,5 @@ module.exports = {
   list,
   update,
   del,
+  single,
 }

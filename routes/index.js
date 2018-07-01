@@ -12,7 +12,7 @@ module.exports = (config => {
 	}, [])
 })([
   'admin',
-  // 'user',
+  'user',
   // 'order',
   // 'ticket',
   // 'type',
