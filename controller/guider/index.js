@@ -25,7 +25,7 @@ const list = val => {
 }
 
 // 根据Id查询
-const one = val => {
+const single = val => {
   const { id } = val
   const sql = 'select * from tour_guider where status != ? and id = ?'
   return query(sql, [ STATUS.DELED, id ])
@@ -42,7 +42,7 @@ const del = val => {
 module.exports = {
   add,
   list,
-  one,
+  single,
   update,
   del,
 }

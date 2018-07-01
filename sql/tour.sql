@@ -1,20 +1,18 @@
 /*
- Navicat Premium Data Transfer
+ Navicat MySQL Data Transfer
 
- Source Server         : lottery
- Source Server Type    : MySQL
- Source Server Version : 50720
+ Source Server         : l-node
+ Source Server Version : 80011
  Source Host           : localhost
  Source Database       : tour
 
- Target Server Type    : MySQL
- Target Server Version : 50720
+ Target Server Version : 80011
  File Encoding         : utf-8
 
- Date: 07/01/2018 13:12:42 PM
+ Date: 07/01/2018 17:39:35 PM
 */
 
-SET NAMES utf8mb4;
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -26,7 +24,7 @@ CREATE TABLE `_mysql_session_store` (
   `expires` bigint(20) DEFAULT NULL,
   `data` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 --  Table structure for `tour_admin`
@@ -34,9 +32,9 @@ CREATE TABLE `_mysql_session_store` (
 DROP TABLE IF EXISTS `tour_admin`;
 CREATE TABLE `tour_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
-  `account` varchar(50) CHARACTER SET utf8 NOT NULL COMMENT '账号',
-  `phone` varchar(11) CHARACTER SET utf8 NOT NULL COMMENT '手机号',
-  `password` varchar(16) CHARACTER SET utf8 NOT NULL COMMENT '密码',
+  `account` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '账号',
+  `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '手机号',
+  `password` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
   `create_time` mediumtext NOT NULL COMMENT '被创建时间',
   `creator` varchar(20) NOT NULL COMMENT '创建人',
   `name` varchar(20) NOT NULL COMMENT '姓名',
@@ -44,7 +42,7 @@ CREATE TABLE `tour_admin` (
   `status` int(11) DEFAULT NULL COMMENT '状态，是否被删（404为被删，300为异常，200为正常）',
   `extra_info` varchar(300) NOT NULL DEFAULT '{}' COMMENT '一些额外信息',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 --  Records of `tour_admin`
@@ -63,7 +61,7 @@ CREATE TABLE `tour_comment` (
   `content` varchar(500) NOT NULL,
   `extra_info` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 --  Table structure for `tour_guider`
@@ -74,14 +72,21 @@ CREATE TABLE `tour_guider` (
   `name` varchar(100) NOT NULL,
   `phone` varchar(11) NOT NULL,
   `password` varchar(16) NOT NULL,
-  `address` varchar(200) NOT NULL,
+  `address` varchar(200) DEFAULT '""',
   `balance` decimal(8,2) DEFAULT NULL,
   `create_time` mediumtext,
-  `card_no` varchar(13) NOT NULL,
+  `card_no` varchar(13) NOT NULL DEFAULT '""',
   `status` int(11) DEFAULT NULL,
   `extra_info` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+--  Records of `tour_guider`
+-- ----------------------------
+BEGIN;
+INSERT INTO `tour_guider` VALUES ('1', '12', '1212', '12', null, null, '2018-07-01 17:39:20', '\"\"', '404', null);
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `tour_order`
@@ -96,7 +101,7 @@ CREATE TABLE `tour_order` (
   `status` int(11) DEFAULT NULL,
   `extra_info` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 --  Table structure for `tour_user`
@@ -114,7 +119,7 @@ CREATE TABLE `tour_user` (
   `status` int(11) DEFAULT NULL,
   `extra_info` varchar(300) DEFAULT '{}',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 --  Records of `tour_user`

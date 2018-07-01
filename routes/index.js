@@ -13,6 +13,7 @@ module.exports = (config => {
 })([
   'admin',
   'user',
+  'guider',
   // 'order',
   // 'ticket',
   // 'type',
