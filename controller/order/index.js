@@ -5,9 +5,9 @@ const { STATUS } = require('../../enum')
 
 // 新添订单
 const add = (val) => {
-  const { userId, guiderId, tourNumber, totalMoney } = val
-  let _sql = 'insert into tour_order(user_id,guider_id,total_money,order_time) values(?,?,?,?,now());'
-  return query( _sql, [ userId, guiderId, tourNumber, totalMoney ] )
+  const { userId, guiderId, totalMoney } = val
+  let _sql = 'insert into tour_order(user_id,guider_id,total_money,status,order_time) values(?,?,?,?,now());'
+  return query( _sql, [ userId, guiderId, totalMoney,STATUS.NORMAL ] )
 }
 
 // 更改订单
@@ -32,6 +32,13 @@ const listb = val => {
   return query(sql, [ STATUS.DELED, guiderId ])
 }
 
+// 根据id查订单
+const single = val => {
+  const { id } = val
+  const sql = 'select * from tour_order where status != ? and id = ?'
+  return query(sql, [ STATUS.DELED, id ])
+}
+
 // 根据用户查订单
 const listu = val => {
   const { userId } = val
@@ -53,5 +60,6 @@ module.exports = {
   listb,
   update,
   del,
+  single,
 }
 
