@@ -1,5 +1,7 @@
 
-module.exports = (config => {
+const router = require('koa-router')()
+// 配置所有的routes文件
+const routes = (config => {
 	return config.reduce((copy, name) => {
     const obj = require(`./${name}`)
     const newArr = Object.keys(obj).reduce((total, each) => {
@@ -15,6 +17,13 @@ module.exports = (config => {
   'user',
   'guider',
   'order',
-  // 'ticket',
-  // 'type',
+  'rsa',
 ])
+
+// 配置最终的路由，形式为
+// router.get(url, service.action)
+routes.forEach(item => {
+  const service = require(`../services/${item.service}`)
+  router[item.method](item.path, service[item.action])
+})
+module.exports = router

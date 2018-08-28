@@ -1,9 +1,10 @@
+// 在lib下封装好的mysql数据库连接池
 const pool = require('../../lib/mysql')
+// NtNUpdate, not null update的意思，取非空字段去更新
 const { NtNUpdate } = require('../../helper')
+// STATUS是定义的枚举对象
 const { STATUS } = require('../../enum')
-const TYPES = {
-  NORMAL: 0,
-}
+// 封装好的数据库连接池对象
 const { query } = pool
 // 新添管理员
 const add = (val) => {

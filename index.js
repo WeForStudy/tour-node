@@ -8,7 +8,7 @@ var config = require('./config/default.js');
 // var views = require('koa-views')
 var koaStatic = require('koa-static')
 var app=new Koa()
-const routers = require('./routers/index')
+const routers = require('./routes/index')
 
 
 
